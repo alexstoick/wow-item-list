@@ -1,0 +1,29 @@
+sudo: required
+
+git:
+  depth: 3
+
+services:
+  - docker
+
+language: generic
+
+
+before_install: make create_ca
+
+install: make builddocker
+
+script: make rundocker
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: make deploy
+
+after_deploy:
+  - make killdocker
+
+notifications:
+  slack: stoicahome:K6Stjkp5XBrpmxeYaSvFI6SX
+  email: false
+
