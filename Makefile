@@ -1,9 +1,3 @@
-create_ca:
-	sudo mkdir -p /etc/docker/certs.d/wow.stoica.xyz:5000
-	sudo mv ca.crt /etc/docker/certs.d/wow.stoica.xyz:5000/ca.crt
-	sudo cat /etc/docker/certs.d/wow.stoica.xyz:5000/ca.crt
-	sudo service docker restart
-
 builddocker:
 		docker build -t wow_item_list_build:latest .
 
@@ -17,8 +11,8 @@ mv_item_list:
 build_item_list:
 		docker build -t wow_item_list:latest build/.
 tag_and_push_item_list:
-		docker tag wow_item_list wow.stoica.xyz:5000/wow_item_list
-		docker push wow.stoica.xyz:5000/wow_item_list
+		docker tag wow_item_list registry.management.stoica.xyz/wow_item_list
+		docker push registry.management.stoica.xyz/wow_item_list
 
 killdocker:
 		docker stop wow_item_list_build

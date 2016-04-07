@@ -8,9 +8,6 @@ services:
 
 language: generic
 
-
-before_install: make create_ca
-
 install: make builddocker
 
 script: make rundocker

@@ -8,4 +8,3 @@ RUN go get github.com/gin-gonic/gin
 RUN go get gopkg.in/redis.v3
 
 RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-s" -a -installsuffix cgo -o item_list
-
