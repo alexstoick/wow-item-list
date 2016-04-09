@@ -3,12 +3,12 @@ package controllers
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"os"
 )
 
-var REDIS_SET_KEY = "wow_item_list"
+var REDIS_SET_KEY = os.Getenv("REDIS_SET_KEY")
 
 func GetList(c *gin.Context) {
-	c.Param("id")
 	redis := FetchRedisFromContext(c)
 	lol := redis.SMembers(REDIS_SET_KEY)
 	c.JSON(200, lol.Val())
